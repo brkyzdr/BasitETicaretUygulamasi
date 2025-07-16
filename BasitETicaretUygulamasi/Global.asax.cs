@@ -16,6 +16,7 @@ namespace BasitETicaretUygulamasi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BasitETicaretUygulamasi.UnityConfig.RegisterComponents();
         }
     }
 }
