@@ -1,0 +1,24 @@
+﻿@model List<Entities.Category>
+
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<h2>Kategoriler</h2>
+<hr />
+
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-md-3">
+            <div class="card mb-3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@category.Name</h5>
+                    <a href="@Url.Action("ListByCategory", "Product", new { id = category.Id })" class="btn btn-primary">
+                        Ürünleri Gör
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

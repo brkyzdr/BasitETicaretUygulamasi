@@ -1,0 +1,22 @@
+﻿@model Entities.Product
+
+@{
+    ViewBag.Title = "Ürün Detayı";
+}
+
+<div class="card">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="img-fluid" alt="@Model.Name" />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h3 class="card-title">@Model.Name</h3>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text"><strong>Fiyat:</strong> @Model.Price.ToString("C")</p>
+                <p class="card-text"><strong>Stok:</strong> @Model.Stock</p>
+                <a href="#" class="btn btn-success">Sepete Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>
