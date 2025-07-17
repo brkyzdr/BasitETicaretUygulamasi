@@ -15,7 +15,7 @@
                 <p class="card-text">@Model.Description</p>
                 <p class="card-text"><strong>Fiyat:</strong> @Model.Price.ToString("C")</p>
                 <p class="card-text"><strong>Stok:</strong> @Model.Stock</p>
-                <a href="#" class="btn btn-success">Sepete Ekle</a>
+                <a href="@Url.Action("AddToCart", "Cart", new { id = Model.Id })" class="btn btn-success">Sepete Ekle</a>
             </div>
         </div>
     </div>
