@@ -13,7 +13,7 @@
             <div class="card-body">
                 <h3 class="card-title">@Model.Name</h3>
                 <p class="card-text">@Model.Description</p>
-                <p class="card-text"><strong>Fiyat:</strong> @Model.Price.ToString("C")</p>
+                <p class="card-text"><strong>Fiyat:</strong> @Model.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</p>
                 <p class="card-text"><strong>Stok:</strong> @Model.Stock</p>
                 <a href="@Url.Action("AddToCart", "Cart", new { id = Model.Id })" class="btn btn-success">Sepete Ekle</a>
             </div>

@@ -18,5 +18,12 @@ namespace BasitETicaretUygulamasi.Controllers
             var categories = _categoryService.GetAll();
             return View(categories);
         }
+
+        public PartialViewResult GetCategories()
+        {
+            var categories = _categoryService.GetAll();
+            return PartialView("CategoryPartial", categories);
+        }
+
     }
 }
