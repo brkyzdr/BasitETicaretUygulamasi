@@ -31,7 +31,13 @@ else
             {
                 <tr>
                     <td>@item.Product.Name</td>
-                    <td>@item.Quantity</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a href="@Url.Action("Decrease", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">−</a>
+                            <span class="px-2">@item.Quantity</span>
+                            <a href="@Url.Action("Increase", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">+</a>
+                        </div>
+                    </td>
                     <td>@item.Product.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
                     <td>@((item.Product.Price * item.Quantity).ToString("C", new System.Globalization.CultureInfo("tr-TR")))</td>
                     <td>

@@ -79,5 +79,38 @@ namespace BasitETicaretUygulamasi.Controllers
             CartSessionManager.ClearCart();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Increase(int id)
+        {
+            var cart = CartSessionManager.GetCart();
+            var item = cart.FirstOrDefault(c => c.Product.Id == id);
+
+            if (item != null)
+            {
+                var product = _productService.GetById(id);
+                if (item.Quantity < product.Stock)
+                {
+                    item.Quantity++;
+                    CartSessionManager.SetCart(cart);
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Decrease(int id)
+        {
+            var cart = CartSessionManager.GetCart();
+            var item = cart.FirstOrDefault(c => c.Product.Id == id);
+
+            if (item != null && item.Quantity > 1)
+            {
+                item.Quantity--;
+                CartSessionManager.SetCart(cart);
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
