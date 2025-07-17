@@ -57,6 +57,10 @@
     <Compile Include="Migrations\202507141035337_InitialCreate.Designer.cs">
       <DependentUpon>202507141035337_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202507171331275_AddCategoryImage.cs" />
+    <Compile Include="Migrations\202507171331275_AddCategoryImage.Designer.cs">
+      <DependentUpon>202507171331275_AddCategoryImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
@@ -74,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202507141035337_InitialCreate.resx">
       <DependentUpon>202507141035337_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202507171331275_AddCategoryImage.resx">
+      <DependentUpon>202507171331275_AddCategoryImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
