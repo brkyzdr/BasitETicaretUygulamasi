@@ -32,10 +32,14 @@ namespace BasitETicaretUygulamasi
 
             // Generic Repository
             container.RegisterType(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            container.RegisterType<IGenericRepository<Order>, GenericRepository<Order>>();
+            container.RegisterType<IGenericRepository<OrderItem>, GenericRepository<OrderItem>>();
+
 
             // Services
             container.RegisterType<IProductService, ProductService>();
             container.RegisterType<ICategoryService, CategoryService>();
+
         }
 
         public static void RegisterComponents()
