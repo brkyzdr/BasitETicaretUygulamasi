@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Admin Paneli";
+}
+
+<h2>Admin Paneli</h2>
+<hr />
+
+<div class="list-group">
+    <a href="@Url.Action("CategoryList", "Admin")" class="list-group-item list-group-item-action">
+        📁 Kategori Yönetimi
+    </a>
+    <a href="@Url.Action("ProductList", "Admin")" class="list-group-item list-group-item-action">
+        🎩 Ürün Yönetimi
+    </a>
+    <a href="@Url.Action("OrderList", "Admin")" class="list-group-item list-group-item-action">
+        🧾 Siparişler
+    </a>
+</div>

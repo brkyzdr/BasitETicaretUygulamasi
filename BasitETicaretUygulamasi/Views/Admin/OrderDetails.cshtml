@@ -1,0 +1,39 @@
+﻿@model List<Entities.OrderItem>
+@{
+    ViewBag.Title = "Sipariş Detayı";
+    var orderId = ViewBag.OrderId;
+}
+
+<h2>Sipariş Detayı (#@orderId)</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">Bu siparişe ait ürün bulunamadı.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Ürün</th>
+                <th>Adet</th>
+                <th>Birim Fiyat</th>
+                <th>Ara Toplam</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
+                    <td>@((item.Quantity * item.UnitPrice).ToString("C", new System.Globalization.CultureInfo("tr-TR")))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("OrderList", "Admin")" class="btn btn-secondary">← Geri</a>
+}

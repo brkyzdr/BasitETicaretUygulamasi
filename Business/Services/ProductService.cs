@@ -1,7 +1,9 @@
 ﻿using Business.Interfaces;
+using DataAccess;
 using DataAccess.Interfaces;
 using Entities;
 using System.Collections.Generic;
+using System.Data.Entity; // Include için gerekli
 using System.Linq;
 
 namespace Business.Services

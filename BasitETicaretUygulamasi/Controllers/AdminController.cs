@@ -1,7 +1,9 @@
 ﻿using Business.Interfaces;
 using Business.Services;
+using DataAccess.Interfaces;
 using Entities;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,11 +13,20 @@ namespace BasitETicaretUygulamasi.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
+        private readonly IGenericRepository<Order> _orderRepository;
+        private readonly IGenericRepository<OrderItem> _orderItemRepository;
 
-        public AdminController(ICategoryService categoryService, IProductService productService)
+        public AdminController(ICategoryService categoryService, IProductService productService, IGenericRepository<Order> orderRepository, IGenericRepository<OrderItem> orderItemRepository)
         {
             _categoryService = categoryService;
             _productService = productService;
+            _orderRepository = orderRepository;
+            _orderItemRepository = orderItemRepository;
+        }
+
+        public ActionResult Index()
+        {
+            return View();
         }
 
         // Tüm kategorileri listele
@@ -110,6 +121,7 @@ namespace BasitETicaretUygulamasi.Controllers
         public ActionResult ProductList()
         {
             var products = _productService.GetAll();
+
             return View(products);
         }
 
@@ -191,5 +203,23 @@ namespace BasitETicaretUygulamasi.Controllers
 
             return RedirectToAction("ProductList");
         }
+
+        public ActionResult OrderList()
+        {
+            var orders = _orderRepository.GetAll()
+                         .OrderByDescending(o => o.OrderDate)
+                         .ToList();
+
+            return View(orders);
+        }
+
+        public ActionResult OrderDetails(int id)
+        {
+            var items = _orderItemRepository.Find(i => i.OrderId == id);
+
+            ViewBag.OrderId = id;
+            return View(items);
+        }
+
     }
 }

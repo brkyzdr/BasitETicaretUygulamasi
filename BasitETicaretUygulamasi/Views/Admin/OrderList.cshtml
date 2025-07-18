@@ -1,0 +1,38 @@
+﻿@model List<Entities.Order>
+@{
+    ViewBag.Title = "Siparişler";
+}
+
+<h2>Sipariş Listesi</h2>
+<hr />
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Henüz sipariş yok.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tarih</th>
+                <th>Toplam Tutar</th>
+                <th>Detay</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.OrderDate.ToString("g")</td>
+                    <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
+                    <td>
+                        <a href="@Url.Action("OrderDetails", "Admin", new { id = order.Id })" class="btn btn-sm btn-outline-primary">Detay</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
