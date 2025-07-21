@@ -3,36 +3,44 @@
     ViewBag.Title = "Siparişler";
 }
 
-<h2>Sipariş Listesi</h2>
-<hr />
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">🧾 Sipariş Listesi</h2>
 
-@if (!Model.Any())
-{
-    <div class="alert alert-info">Henüz sipariş yok.</div>
-}
-else
-{
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Tarih</th>
-                <th>Toplam Tutar</th>
-                <th>Detay</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in Model)
-            {
-                <tr>
-                    <td>@order.Id</td>
-                    <td>@order.OrderDate.ToString("g")</td>
-                    <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
-                    <td>
-                        <a href="@Url.Action("OrderDetails", "Admin", new { id = order.Id })" class="btn btn-sm btn-outline-primary">Detay</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center py-4">
+            Henüz sipariş alınmadı.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle shadow-sm border rounded">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Sipariş ID</th>
+                        <th scope="col">Tarih</th>
+                        <th scope="col">Toplam Tutar</th>
+                        <th scope="col" class="text-center">Detay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">#@order.Id</td>
+                            <td>@order.OrderDate.ToString("g")</td>
+                            <td>@order.TotalPrice.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
+                            <td class="text-center">
+                                <a href="@Url.Action("OrderDetails", "Admin", new { id = order.Id })"
+                                   class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-eye"></i> Görüntüle
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
