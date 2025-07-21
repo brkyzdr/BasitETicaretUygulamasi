@@ -5,60 +5,72 @@
     decimal total = Model.Sum(item => item.Product.Price * item.Quantity);
 }
 
-<h2>Sepetim</h2>
-<hr />
+<h2 class="text-center fw-bold mb-4">Sepetim</h2>
 
 @if (!Model.Any())
 {
-    <div class="alert alert-info">
+    <div class="alert alert-info text-center py-4">
         Sepetiniz şu anda boş.
     </div>
 }
 else
 {
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Ürün</th>
-                <th>Adet</th>
-                <th>Fiyat</th>
-                <th>Ara Toplam</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+    <div class="table-responsive">
+        <table class="table align-middle table-hover shadow-sm border rounded overflow-hidden">
+            <thead class="table-light">
                 <tr>
-                    <td>@item.Product.Name</td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <a href="@Url.Action("Decrease", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">−</a>
-                            <span class="px-2">@item.Quantity</span>
-                            <a href="@Url.Action("Increase", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">+</a>
-                        </div>
-                    </td>
-                    <td>@item.Product.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
-                    <td>@((item.Product.Price * item.Quantity).ToString("C", new System.Globalization.CultureInfo("tr-TR")))</td>
-                    <td>
-                        <a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })" class="btn btn-danger btn-sm">
-                            Sil
-                        </a>
-                    </td>
+                    <th>Görsel</th>
+                    <th>Ürün</th>
+                    <th class="text-center">Adet</th>
+                    <th class="text-end">Birim Fiyat</th>
+                    <th class="text-end">Ara Toplam</th>
+                    <th class="text-center">İşlem</th>
                 </tr>
-            }
-        </tbody>
-        <tfoot>
-            <tr>
-                <th colspan="3" class="text-right">Toplam:</th>
-                <th>@total.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</th>
-                <th></th>
-            </tr>
-        </tfoot>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width: 100px;">
+                            <img src="@item.Product.ImageUrl" alt="@item.Product.Name"
+                                 class="img-fluid rounded" style="height: 70px; object-fit: contain;" />
+                        </td>
+                        <td>
+                            <strong>@item.Product.Name</strong>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group">
+                                <a href="@Url.Action("Decrease", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">−</a>
+                                <span class="px-2 fw-bold">@item.Quantity</span>
+                                <a href="@Url.Action("Increase", "Cart", new { id = item.Product.Id })" class="btn btn-outline-secondary btn-sm">+</a>
+                            </div>
+                        </td>
+                        <td class="text-end">@item.Product.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</td>
+                        <td class="text-end">@((item.Product.Price * item.Quantity).ToString("C", new System.Globalization.CultureInfo("tr-TR")))</td>
+                        <td class="text-center">
+                            <a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot class="table-light">
+                <tr>
+                    <th colspan="4" class="text-end">Toplam:</th>
+                    <th class="text-end">@total.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 
-    <div class="d-flex justify-content-between">
-        <a href="@Url.Action("Clear", "Cart")" class="btn btn-outline-danger">Sepeti Temizle</a>
-        <a href="@Url.Action("Index", "Checkout")" class="btn btn-success">Siparişi Tamamla</a>
+    <div class="d-flex justify-content-between mt-4">
+        <a href="@Url.Action("Clear", "Cart")" class="btn btn-outline-danger">
+            <i class="fas fa-trash me-1"></i> Sepeti Temizle
+        </a>
+        <a href="@Url.Action("Index", "Checkout")" class="btn btn-success px-4">
+            <i class="fas fa-credit-card me-1"></i> Siparişi Tamamla
+        </a>
     </div>
 }
