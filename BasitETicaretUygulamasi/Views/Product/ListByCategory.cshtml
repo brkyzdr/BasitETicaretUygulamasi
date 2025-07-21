@@ -4,21 +4,29 @@
     ViewBag.Title = "Ürünler";
 }
 
-<h2>Ürünler</h2>
-<hr />
+<h2 class="text-center fw-bold mb-4">Ürünler</h2>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
     @foreach (var product in Model)
     {
-        <div class="col-md-3">
-            <div class="card mb-3">
-                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;" />
-                <div class="card-body">
-                    <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">@product.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))</p>
-                    <a href="@Url.Action("Details", "Product", new { id = product.Id })" class="btn btn-outline-primary btn-sm">Detay</a>
+        <div class="col">
+            <a href="@Url.Action("Details", "Product", new { id = product.Id })"
+               class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0 product-card clickable-card">
+                    <div class="product-image-wrapper">
+                        <img src="@product.ImageUrl"
+                             alt="@product.Name"
+                             class="img-fluid object-fit-contain" />
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title fw-semibold mb-2">@product.Name</h6>
+                        <p class="text-primary fw-bold mb-2">
+                            @product.Price.ToString("C", new System.Globalization.CultureInfo("tr-TR"))
+                        </p>
+                        <div class="text-muted small">Ürün detayını görüntüle</div>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     }
 </div>
