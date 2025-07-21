@@ -2,17 +2,41 @@
     ViewBag.Title = "Admin Paneli";
 }
 
-<h2>Admin Paneli</h2>
-<hr />
+<div class="container my-5">
+    <h2 class="text-center fw-bold mb-4">Admin Paneli</h2>
 
-<div class="list-group">
-    <a href="@Url.Action("CategoryList", "Admin")" class="list-group-item list-group-item-action">
-        📁 Kategori Yönetimi
-    </a>
-    <a href="@Url.Action("ProductList", "Admin")" class="list-group-item list-group-item-action">
-        🎩 Ürün Yönetimi
-    </a>
-    <a href="@Url.Action("OrderList", "Admin")" class="list-group-item list-group-item-action">
-        🧾 Siparişler
-    </a>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <a href="@Url.Action("CategoryList", "Admin")" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0 admin-card text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-folder fa-2x text-primary"></i>
+                    </div>
+                    <h5 class="fw-semibold">Kategori Yönetimi</h5>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="@Url.Action("ProductList", "Admin")" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0 admin-card text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-hat-cowboy fa-2x text-success"></i>
+                    </div>
+                    <h5 class="fw-semibold">Ürün Yönetimi</h5>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="@Url.Action("OrderList", "Admin")" class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm border-0 admin-card text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-receipt fa-2x text-warning"></i>
+                    </div>
+                    <h5 class="fw-semibold">Siparişler</h5>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
