@@ -25,36 +25,48 @@ h2 {
     font-weight: 600;
 }
 
+.card-body {
+    background-color: #f8f9fa;
+}
+
 .btn-outline-primary {
     border-radius: 50px;
     padding: 8px 24px;
     font-weight: 500;
 }
+
+/* Category özel kart stilleri */
 .category-card {
-    border-radius: 16px;
-    transition: all 0.3s ease;
-    background-color: #fff;
+    background-color: #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
+    .category-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
 
 .category-image-wrapper {
     width: 100%;
-    height: 240px;
+    height: 400px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f3f3f3;
 }
 
-.category-image-wrapper img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    padding: 12px;
+    .category-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 12px;
+        background-color: #fff;
+    }
+
+
+.clickable-card {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 

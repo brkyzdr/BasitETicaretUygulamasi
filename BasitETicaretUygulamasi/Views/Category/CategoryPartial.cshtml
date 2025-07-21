@@ -1,19 +1,10 @@
 ﻿@model List<Entities.Category>
 
-<ul class="navbar-nav me-auto">
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="kategoriDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Kategoriler
+@foreach (var category in Model)
+{
+    <li>
+        <a class="dropdown-item text-capitalize" href="@Url.Action("ListByCategory", "Product", new { id = category.Id })">
+            @category.Name
         </a>
-        <ul class="dropdown-menu" aria-labelledby="kategoriDropdown">
-            @foreach (var category in Model)
-            {
-                <li>
-                    <a class="dropdown-item" href="@Url.Action("ListByCategory", "Product", new { id = category.Id })">
-                        @category.Name
-                    </a>
-                </li>
-            }
-        </ul>
     </li>
-</ul>
+}

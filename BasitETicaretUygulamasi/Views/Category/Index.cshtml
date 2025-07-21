@@ -4,25 +4,28 @@
     ViewBag.Title = "Kategoriler";
 }
 
-<h2>Kategoriler</h2>
-<hr />
+<h2 class="text-center fw-bold mb-4">Kategoriler</h2>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
     @foreach (var category in Model)
     {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <br />
-                <img src="@category.ImageUrl" class="card-img-top"
-                     alt="@category.Name"
-                     style="height: 300px; object-fit: contain;" />
-                <div class="card-body text-center">
-                    <h5 class="card-title">@category.Name</h5>
-                    <a href="@Url.Action("ListByCategory", "Product", new { id = category.Id })" class="btn btn-primary">
-                        Ürünleri Gör
-                    </a>
+        <div class="col">
+            <a href="@Url.Action("ListByCategory", "Product", new { id = category.Id })"
+               class="text-decoration-none text-dark">
+                <div class="card h-100 shadow-sm category-card clickable-card">
+
+                    <div class="category-image-wrapper">
+                        <img src="@category.ImageUrl"
+                             alt="@category.Name"
+                             class="img-fluid w-100 h-100 object-fit-cover" />
+                    </div>
+
+                    <div class="card-body text-center px-3 pt-3 pb-3">
+                        <h5 class="card-title fw-semibold mb-1">@category.Name</h5>
+                        <div class="text-muted small">Tüm ürünleri görüntüle</div>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
     }
 </div>
