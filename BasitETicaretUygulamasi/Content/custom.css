@@ -92,4 +92,16 @@ h2 {
         object-fit: contain;
     }
 
+.admin-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #f8f9fa;
+}
+
+    .admin-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+
 

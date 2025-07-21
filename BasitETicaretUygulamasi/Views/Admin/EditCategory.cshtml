@@ -3,29 +3,38 @@
     ViewBag.Title = "Kategori Düzenle";
 }
 
-<h2>Kategori Düzenle</h2>
-<hr />
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">Kategori Düzenle</h2>
 
-@using (Html.BeginForm("EditCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.HiddenFor(x => x.Id)
+    @using (Html.BeginForm("EditCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(x => x.Id)
 
-    <div class="mb-3">
-        @Html.LabelFor(x => x.Name, "Kategori Adı")
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Name)
-    </div>
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Name, "Kategori Adı", htmlAttributes: new { @class = "form-label fw-semibold" })
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Kategori adı" })
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger small" })
+        </div>
 
-    <div class="mb-3">
-        <label>Mevcut Görsel:</label><br />
-        <img src="@Model.ImageUrl" style="height:100px; object-fit:contain;" />
-    </div>
+        <div class="mb-4">
+            <label class="form-label fw-semibold">Mevcut Görsel</label>
+            <div class="border rounded p-2 bg-white text-center" style="max-width: 200px;">
+                <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" style="max-height: 200px; object-fit: contain;" />
+            </div>
+        </div>
 
-    <div class="mb-3">
-        <label for="imageFile">Yeni Görsel (İsteğe bağlı):</label>
-        <input type="file" name="imageFile" class="form-control" />
-    </div>
+        <div class="mb-4">
+            <label for="imageFile" class="form-label fw-semibold">Yeni Görsel (İsteğe Bağlı)</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+        </div>
 
-    <button type="submit" class="btn btn-primary">Güncelle</button>
-    <a href="@Url.Action("CategoryList", "Admin")" class="btn btn-secondary">İptal</a>
-}
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save me-1"></i> Güncelle
+            </button>
+            <a href="@Url.Action("CategoryList", "Admin")" class="btn btn-outline-secondary">
+                İptal
+            </a>
+        </div>
+    }
+</div>

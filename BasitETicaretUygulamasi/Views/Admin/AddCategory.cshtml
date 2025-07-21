@@ -3,23 +3,29 @@
     ViewBag.Title = "Kategori Ekle";
 }
 
-<h2>Yeni Kategori Ekle</h2>
-<hr />
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">Yeni Kategori Ekle</h2>
 
-@using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <div class="mb-3">
-        @Html.LabelFor(x => x.Name, "Kategori Adı")
-        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(x => x.Name)
-    </div>
+    @using (Html.BeginForm("AddCategory", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="mb-3">
+            @Html.LabelFor(x => x.Name, "Kategori Adı", htmlAttributes: new { @class = "form-label fw-semibold" })
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Örn: Yaz Şapkaları" })
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger small" })
+        </div>
 
-    <div class="mb-3">
-        <label for="imageFile">Görsel Yükle</label>
-        <input type="file" name="imageFile" class="form-control" />
-    </div>
+        <div class="mb-4">
+            <label for="imageFile" class="form-label fw-semibold">Kategori Görseli</label>
+            <input type="file" name="imageFile" class="form-control" accept="image/*" />
+        </div>
 
-    <button type="submit" class="btn btn-success">Kaydet</button>
-    <a href="@Url.Action("CategoryList", "Admin")" class="btn btn-secondary">İptal</a>
-}
-
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-check me-1"></i> Kaydet
+            </button>
+            <a href="@Url.Action("CategoryList", "Admin")" class="btn btn-outline-secondary">
+                İptal
+            </a>
+        </div>
+    }
+</div>
